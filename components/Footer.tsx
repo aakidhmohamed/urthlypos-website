@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Monitor, Heart } from 'lucide-react';
 import FadeIn from './FadeIn';
+import LegalModal from './LegalModal';
+import { PRIVACY_POLICY, TERMS_AND_CONDITIONS } from '../data/legalContent';
 
 const Footer: React.FC = () => {
+    const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
+
     return (
         <footer className="bg-surface text-text-muted py-16 border-t border-border relative z-10">
+            <LegalModal
+                isOpen={activeModal === 'privacy'}
+                onClose={() => setActiveModal(null)}
+                document={PRIVACY_POLICY}
+            />
+            <LegalModal
+                isOpen={activeModal === 'terms'}
+                onClose={() => setActiveModal(null)}
+                document={TERMS_AND_CONDITIONS}
+            />
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <FadeIn delay={0} className="col-span-1 md:col-span-1">
@@ -22,35 +37,41 @@ const Footer: React.FC = () => {
                     <FadeIn delay={100}>
                         <h4 className="text-text font-heading font-bold text-sm uppercase tracking-wider mb-6">Company</h4>
                         <ul className="space-y-4 text-sm">
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">About</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Features</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Works</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Career</a></li>
+                            <li><a href="#about" className="hover:text-primary transition-colors focus-ring rounded-sm">About</a></li>
+                            <li><a href="#features" className="hover:text-primary transition-colors focus-ring rounded-sm">Features</a></li>
+                            <li><a href="#pricing" className="hover:text-primary transition-colors focus-ring rounded-sm">Pricing</a></li>
                         </ul>
                     </FadeIn>
 
                     <FadeIn delay={200}>
-                        <h4 className="text-text font-heading font-bold text-sm uppercase tracking-wider mb-6">Help</h4>
+                        <h4 className="text-text font-heading font-bold text-sm uppercase tracking-wider mb-6">Legal</h4>
                         <ul className="space-y-4 text-sm">
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Customer Support</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Delivery Details</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Terms & Conditions</a></li>
-                            <li><a href="#" className="hover:text-primary transition-colors focus-ring rounded-sm">Privacy Policy</a></li>
+                            <li>
+                                <button
+                                    onClick={() => setActiveModal('privacy')}
+                                    className="hover:text-primary transition-colors focus-ring rounded-sm text-left"
+                                >
+                                    Privacy Policy
+                                </button>
+                            </li>
+                            <li>
+                                <button
+                                    onClick={() => setActiveModal('terms')}
+                                    className="hover:text-primary transition-colors focus-ring rounded-sm text-left"
+                                >
+                                    Terms & Conditions
+                                </button>
+                            </li>
                         </ul>
                     </FadeIn>
 
                     <FadeIn delay={300}>
-                        <h4 className="text-text font-heading font-bold text-sm uppercase tracking-wider mb-6">Newsletter</h4>
-                        <div className="flex flex-col gap-3">
-                            <input
-                                type="email"
-                                placeholder="Enter your email address"
-                                className="bg-background border border-border rounded-xl px-4 py-3 text-sm text-text focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 ease-premium shadow-inner"
-                            />
-                            <button className="bg-primary text-white font-heading font-bold py-3 rounded-xl text-sm hover:bg-primary-hover transition-all duration-300 ease-premium shadow-glow hover:shadow-glow-lg hover:scale-105 active:scale-95 focus-ring">
-                                Subscribe Now
-                            </button>
-                        </div>
+                        <h4 className="text-text font-heading font-bold text-sm uppercase tracking-wider mb-6">Address</h4>
+                        <ul className="space-y-4 text-sm">
+                            <li><span className="text-text-muted">No. 122, Kandy Road, Weweldeniya.</span></li>
+                            <li><a href="tel:+94775364754" className="hover:text-primary transition-colors focus-ring rounded-sm">+94 77 536 4754</a></li>
+                            <li><a href="tel:+94726294115" className="hover:text-primary transition-colors focus-ring rounded-sm">+94 72 629 4115</a></li>
+                        </ul>
                     </FadeIn>
                 </div>
 
