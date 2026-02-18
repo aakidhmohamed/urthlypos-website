@@ -37,7 +37,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, document: doc 
 
     return (
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-6 animate-in fade-in duration-300"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-6 animate-in fade-in duration-300"
             onClick={handleBackdropClick}
         >
             <div
