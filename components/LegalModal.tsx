@@ -1,5 +1,6 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, CheckCircle2, Info, ArrowRight } from 'lucide-react';
 import { LegalDocument } from '../data/legalContent';
 
@@ -11,6 +12,12 @@ interface LegalModalProps {
 
 const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, document: doc }) => {
     const modalRef = useRef<HTMLDivElement>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
 
     // Close on escape key
     useEffect(() => {
@@ -33,11 +40,11 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, document: doc 
         }
     };
 
-    if (!isOpen) return null;
+    if (!isOpen || !mounted) return null;
 
-    return (
+    return createPortal(
         <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-6 animate-in fade-in duration-300"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-md p-4 md:p-6 animate-in fade-in duration-300"
             onClick={handleBackdropClick}
         >
             <div
@@ -125,7 +132,8 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, document: doc 
                     </button>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 };
 
