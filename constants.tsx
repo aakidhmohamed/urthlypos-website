@@ -11,7 +11,11 @@ import {
   Printer,
   ShieldCheck,
   Globe,
-  BarChart3
+  BarChart3,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin
 } from 'lucide-react';
 import { NavItem, Industry, Feature, PricingPlan, FAQ, Testimonial } from './types';
 
@@ -22,6 +26,13 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Industries', href: '#industries' },
   { label: 'Features', href: '#features' },
   { label: 'Pricing', href: '#pricing' },
+];
+
+export const SOCIAL_LINKS = [
+  { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61585315348826', label: 'Facebook' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Instagram, href: '#', label: 'Instagram' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
 ];
 
 export const INDUSTRIES: Industry[] = [

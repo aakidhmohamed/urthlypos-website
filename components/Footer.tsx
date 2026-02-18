@@ -3,6 +3,7 @@ import { Monitor, Heart } from 'lucide-react';
 import FadeIn from './FadeIn';
 import LegalModal from './LegalModal';
 import { PRIVACY_POLICY, TERMS_AND_CONDITIONS } from '../data/legalContent';
+import { SOCIAL_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
     const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
@@ -32,6 +33,18 @@ const Footer: React.FC = () => {
                         <p className="text-sm leading-relaxed mb-6">
                             Empowering businesses with reliable, offline-first technology. Built for speed, security, and peace of mind.
                         </p>
+                        <div className="flex gap-4">
+                            {SOCIAL_LINKS.map((social) => (
+                                <a
+                                    key={social.label}
+                                    href={social.href}
+                                    className="bg-primary/5 p-2 rounded-full border border-primary/20 hover:border-primary text-primary transition-all duration-300 hover:scale-110 focus-ring"
+                                    aria-label={social.label}
+                                >
+                                    <social.icon className="w-4 h-4" />
+                                </a>
+                            ))}
+                        </div>
                     </FadeIn>
 
                     <FadeIn delay={100}>
