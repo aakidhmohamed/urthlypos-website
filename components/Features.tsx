@@ -1,155 +1,190 @@
 import React from 'react';
 import { FEATURES } from '../constants';
-import { WifiOff, Printer, PackageCheck, TrendingUp, Users } from 'lucide-react';
+import { WifiOff, Printer, PackageCheck, TrendingUp, Users, ShieldCheck, Zap } from 'lucide-react';
 import FadeIn from './FadeIn';
 
 const Features: React.FC = () => {
-    return (
-        <section id="features" className="py-24 relative bg-surface-base">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-16">
-                    <FadeIn>
-                        <span className="text-[11px] font-bold tracking-[0.2em] text-primary uppercase mb-4 block opacity-80">Capabilities</span>
-                    </FadeIn>
-                    <FadeIn delay={100}>
-                        <h2 className="text-4xl md:text-5xl font-bold text-text mb-6 tracking-tight text-pretty">
-                            Everything You Need to <br />
-                            <span className="text-primary">Run Your Shop Professionally</span>
-                        </h2>
-                    </FadeIn>
-                </div>
+  return (
+    <section id="features" className="py-24 md:py-32 relative border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
 
-                {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-                    {/* Card 1: Sales Reports */}
-                    <FadeIn delay={200} className="bg-surface-raised p-8 rounded-2xl border border-border md:col-span-1 group hover:border-border-premium transition-all duration-300 ease-premium hover:shadow-premium h-full">
-                        <div className="flex justify-between items-center mb-8">
-                            <h3 className="font-bold text-text flex items-center gap-3">
-                                <div className="p-2 bg-primary/10 border border-border-premium rounded-lg group-hover:bg-primary/20 transition-colors">
-                                    <TrendingUp className="w-5 h-5 text-primary" />
-                                </div>
-                                Sales Reports
-                            </h3>
-                        </div>
-                        {/* Abstract Graph */}
-                        <div className="h-40 w-full flex items-end justify-between gap-1 mb-6">
-                            <div className="w-full relative h-full">
-                                <svg viewBox="0 0 100 50" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-                                    <defs>
-                                        <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style={{ stopColor: '#22C55E', stopOpacity: 0.2 }} />
-                                            <stop offset="100%" style={{ stopColor: '#22C55E', stopOpacity: 0 }} />
-                                        </linearGradient>
-                                    </defs>
-                                    <path d="M0 40 Q 20 10 40 30 T 80 20 T 100 35" fill="url(#grad1)" stroke="#22C55E" strokeWidth="3" className="drop-shadow-md" />
-                                    <circle cx="80" cy="20" r="4" fill="#22C55E" className="animate-pulse" />
-                                </svg>
-                            </div>
-                        </div>
-                        <h4 className="text-xl font-bold text-text mb-2">Detailed Analytics</h4>
-                        <p className="text-text-muted text-sm leading-relaxed font-medium">
-                            Track daily revenue, profit margins, and best-selling items with detailed visual reports.
-                        </p>
-                    </FadeIn>
-
-                    {/* Card 2: Offline First (Hero Feature) */}
-                    <FadeIn delay={300} className="bg-surface-raised p-8 rounded-2xl border border-border md:col-span-2 relative overflow-hidden group hover:border-border-premium transition-all duration-300 ease-premium hover:shadow-premium h-full">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors duration-500"></div>
-
-                        <div className="relative z-10 flex flex-col h-full justify-between">
-                            <div>
-                                <div className="flex items-center gap-3 mb-8">
-                                    <div className="p-2 bg-background border border-border rounded-lg group-hover:border-border-premium transition-colors"><WifiOff className="w-6 h-6 text-text" /></div>
-                                    <h4 className="text-2xl font-bold text-text tracking-tight">Works 100% Offline</h4>
-                                </div>
-
-                                <p className="text-text-muted text-lg leading-relaxed max-w-lg mb-8 font-medium">
-                                    Never stop selling. Our system runs completely independently on your device. No internet required, ever. Your data stays safe locally.
-                                </p>
-                            </div>
-
-                            {/* Visual Representation */}
-                            <div className="flex gap-4 items-center self-start">
-                                <div className="bg-surface-base border border-border-premium text-text px-6 py-3 rounded-xl shadow-premium flex items-center gap-3 group-hover:border-primary/50 transition-colors">
-                                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse shadow-glow-primary"></div>
-                                    <span className="font-mono font-bold text-sm">SYSTEM_ONLINE</span>
-                                </div>
-                                <div className="w-16 h-[1px] bg-border group-hover:bg-primary/30 transition-colors"></div>
-                                <div className="bg-background text-text-dim px-6 py-3 rounded-xl border border-border flex items-center gap-3 grayscale opacity-70">
-                                    <WifiOff className="w-4 h-4" />
-                                    <span className="font-mono font-medium text-sm line-through">INTERNET</span>
-                                </div>
-                            </div>
-                        </div>
-                    </FadeIn>
-
-                    {/* Card 3: Inventory */}
-                    <FadeIn delay={400} className="bg-surface p-8 rounded-3xl border border-border md:col-span-1 group hover:border-primary/50 transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-lift h-full">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="font-heading font-bold text-text flex items-center gap-2">
-                                <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                                    <PackageCheck className="w-5 h-5 text-primary" />
-                                </div>
-                                Inventory
-                            </h3>
-                        </div>
-                        <div className="space-y-3 mb-6">
-                            <div className="flex justify-between items-center bg-background border border-border p-3 rounded-xl group-hover:border-error/30 transition-colors">
-                                <span className="text-xs font-semibold text-text">Paracetamol 500mg</span>
-                                <span className="text-[10px] font-mono font-bold text-error bg-error/10 px-2 py-1 rounded-full">EXP: 2 DAYS</span>
-                            </div>
-                            <div className="flex justify-between items-center bg-background border border-border p-3 rounded-xl group-hover:border-warning/30 transition-colors">
-                                <span className="text-xs font-semibold text-text">Milk 1L Carton</span>
-                                <span className="text-[10px] font-mono font-bold text-warning bg-warning/10 px-2 py-1 rounded-full">LOW STOCK</span>
-                            </div>
-                        </div>
-                        <h4 className="text-xl font-heading font-bold text-text mb-2">Smart Inventory</h4>
-                        <p className="text-text-muted text-sm leading-relaxed">
-                            Real-time stock tracking with low-stock alerts and expiry date notifications.
-                        </p>
-                    </FadeIn>
-
-                    {/* Card 4: Hardware Support */}
-                    <FadeIn delay={500} className="bg-surface p-8 rounded-3xl border border-border md:col-span-1 flex flex-col items-center text-center group hover:border-primary/50 transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-lift h-full">
-                        <div className="relative w-32 h-32 mb-6">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-14 h-14 bg-background border-2 border-border rounded-2xl flex items-center justify-center z-10 relative group-hover:border-primary/30 transition-colors">
-                                    <Printer className="w-7 h-7 text-primary" />
-                                </div>
-                            </div>
-                            {/* Orbiting Icons */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-9 h-9 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center animate-bounce duration-1000"><span className="text-[9px] font-mono font-bold text-primary">SCAN</span></div>
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-9 h-9 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center animate-bounce duration-1000 delay-100"><span className="text-[9px] font-mono font-bold text-primary">PRNT</span></div>
-                            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-9 h-9 bg-primary/10 border border-primary/20 rounded-full flex items-center justify-center animate-bounce duration-1000 delay-200"><span className="text-[9px] font-mono font-bold text-primary">CASH</span></div>
-                            <div className="absolute top-1/2 right-0 -translate-y-1/2 w-9 h-9 bg-background border border-border rounded-full flex items-center justify-center animate-bounce duration-1000 delay-300"><span className="text-[9px] font-mono font-bold text-text-muted">SCLE</span></div>
-                        </div>
-                        <h4 className="text-xl font-heading font-bold text-text mb-2">Hardware Ready</h4>
-                        <p className="text-text-muted text-sm leading-relaxed">
-                            Plug & play support for scanners, printers, and cash drawers.
-                        </p>
-                    </FadeIn>
-
-                    {/* Card 5: Staff Management */}
-                    <FadeIn delay={600} className="bg-surface p-8 rounded-3xl border border-border md:col-span-1 group hover:border-primary/50 transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-lift h-full">
-                        <div className="flex -space-x-4 mb-6 justify-center">
-                            {[1, 2, 3].map(i => (
-                                <div key={i} className="w-12 h-12 rounded-full border-4 border-surface bg-border overflow-hidden relative z-0 hover:z-10 hover:scale-110 transition-all duration-300">
-                                    <img src={`https://picsum.photos/100/100?random=${i + 50}`} alt="Staff" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300" />
-                                </div>
-                            ))}
-                            <div className="w-12 h-12 rounded-full border-4 border-surface bg-primary/20 text-primary flex items-center justify-center text-xs font-bold relative z-0 hover:z-10 hover:scale-110 transition-all duration-300 font-mono group-hover:bg-primary group-hover:text-white">+2</div>
-                        </div>
-                        <h4 className="text-xl font-heading font-bold text-text mb-2">Staff Management</h4>
-                        <p className="text-text-muted text-sm leading-relaxed">
-                            Create individual staff accounts with specific permissions and sales tracking.
-                        </p>
-                    </FadeIn>
-
-                </div>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <FadeIn>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full
+                            bg-amber-subtle border border-border-amber text-amber-DEFAULT
+                            text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <Zap className="w-3.5 h-3.5" />
+              <span>Built For High Performance</span>
             </div>
-        </section>
-    );
+          </FadeIn>
+          <FadeIn delay={100}>
+            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text tracking-tight mb-4 leading-tight">
+              Architected For{' '}
+              <span className="text-gradient-amber">100% Uninterrupted Sales</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={200}>
+            <p className="text-text-secondary text-lg max-w-xl mx-auto font-medium">
+              Every detail of Urthly POS is engineered for speed, accuracy, and absolute offline independence.
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          {/* Hero Bento: Offline-First — spans 2 cols */}
+          <FadeIn delay={200} className="md:col-span-2">
+            <div className="h-full bg-surface-raised border border-border rounded-3xl p-8 relative overflow-hidden card-hover flex flex-col justify-between">
+              {/* Subtle corner glow */}
+              <div
+                className="absolute top-0 right-0 w-64 h-64 pointer-events-none"
+                style={{ background: 'radial-gradient(circle at top right, rgba(232,160,32,0.07), transparent 70%)' }}
+                aria-hidden="true"
+              />
+
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="p-3 bg-amber-subtle border border-border-amber rounded-2xl text-amber-DEFAULT">
+                    <WifiOff className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono font-bold text-amber-DEFAULT bg-amber-subtle px-3 py-1 rounded-full border border-border-amber">
+                    ZERO DOWNTIME GUARANTEE
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-text mb-4 tracking-tight">
+                  100% Offline-First Core Architecture
+                </h3>
+                <p className="text-text-secondary text-base leading-relaxed max-w-xl mb-8 font-medium">
+                  Your checkout counters never pause or freeze. Bills are processed locally in sub-seconds with zero dependency on Dialog, SLT, or cloud web servers.
+                </p>
+              </div>
+
+              {/* Live status indicator */}
+              <div className="p-4 rounded-2xl bg-canvas border border-border flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+                <div className="flex items-center gap-3">
+                  <div className="w-2.5 h-2.5 bg-amber-DEFAULT rounded-full animate-pulse" />
+                  <span className="text-text font-bold">LOCAL_DATABASE: ACTIVE</span>
+                </div>
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <span>Latency:</span>
+                  <span className="text-amber-DEFAULT font-bold">0.04ms</span>
+                </div>
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <span>Cloud:</span>
+                  <span className="text-text font-semibold">Independent</span>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Analytics & Reports */}
+          <FadeIn delay={300} className="md:col-span-1">
+            <div className="h-full bg-surface-raised border border-border rounded-3xl p-8 flex flex-col justify-between card-hover">
+              <div>
+                <div className="p-3 bg-amber-subtle border border-border-amber rounded-2xl text-amber-DEFAULT w-fit mb-6">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-text mb-3">Instant Profit & Sales Reports</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 font-medium">
+                  Real-time margin tracking, daily cash drawer balance, and automated Z-Report exports for store owners.
+                </p>
+              </div>
+
+              {/* Mini bar chart */}
+              <div className="h-20 w-full bg-canvas rounded-2xl px-4 pt-3 pb-0 border border-border flex items-end gap-1.5">
+                {[35, 50, 40, 75, 60, 90, 80, 100].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-full rounded-t transition-all duration-500 hover:opacity-90"
+                    style={{
+                      height: `${h}%`,
+                      background: h === 100
+                        ? 'linear-gradient(180deg, #F5BC4A, #E8A020)'
+                        : `rgba(232,160,32,${0.25 + h * 0.004})`,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Inventory & Expiry */}
+          <FadeIn delay={400} className="md:col-span-1">
+            <div className="h-full bg-surface-raised border border-border rounded-3xl p-8 flex flex-col justify-between card-hover">
+              <div>
+                <div className="p-3 bg-amber-subtle border border-border-amber rounded-2xl text-amber-DEFAULT w-fit mb-6">
+                  <PackageCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-text mb-3">Inventory & Expiry Control</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 font-medium">
+                  Automatic re-order thresholds, batch/lot tracking for medicines, and advance expiry date warnings.
+                </p>
+              </div>
+
+              <div className="space-y-2 font-mono text-xs">
+                <div className="p-3 rounded-xl bg-red-500/8 border border-red-500/20 text-red-400 flex justify-between items-center">
+                  <span>Panadol 500mg (Batch #402)</span>
+                  <span className="font-bold">EXP: 5 DAYS</span>
+                </div>
+                <div className="p-3 rounded-xl bg-amber-subtle border border-border-amber text-amber-DEFAULT flex justify-between items-center">
+                  <span>Anchor Powder 400g</span>
+                  <span className="font-bold">LOW STOCK</span>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Hardware Support */}
+          <FadeIn delay={500} className="md:col-span-1">
+            <div className="h-full bg-surface-raised border border-border rounded-3xl p-8 flex flex-col justify-between card-hover">
+              <div>
+                <div className="p-3 bg-amber-subtle border border-border-amber rounded-2xl text-amber-DEFAULT w-fit mb-6">
+                  <Printer className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-text mb-3">Plug & Play Hardware Support</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 font-medium">
+                  Connect thermal printers, Honeywell 1D/2D barcode scanners, digital weighing scales, and cash drawers effortlessly.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 text-[11px] font-mono text-text-secondary">
+                {['ESC/POS Printers', 'Serial Scales', 'USB Scanners', 'Cash Drawers', 'Honeywell 1D/2D'].map(tag => (
+                  <span key={tag} className="px-2.5 py-1 rounded-lg bg-surface border border-border">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Role-Based Security */}
+          <FadeIn delay={600} className="md:col-span-1">
+            <div className="h-full bg-surface-raised border border-border rounded-3xl p-8 flex flex-col justify-between card-hover">
+              <div>
+                <div className="p-3 bg-amber-subtle border border-border-amber rounded-2xl text-amber-DEFAULT w-fit mb-6">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-text mb-3">Role-Based Cashier Security</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6 font-medium">
+                  Prevent theft with strict permissions for discounts, bill cancellations, stock adjustments, and cash drawer openings.
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between p-3 rounded-xl bg-canvas border border-border text-xs font-mono">
+                <span className="text-text font-bold">Admin / Manager / Cashier</span>
+                <span className="text-amber-DEFAULT flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5" /> Granular Logs
+                </span>
+              </div>
+            </div>
+          </FadeIn>
+
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Features;

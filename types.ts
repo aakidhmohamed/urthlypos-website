@@ -23,6 +23,7 @@ export interface Feature {
 
 export interface PricingPlan {
   name: string;
+  tagline?: string;
   price: string;
   period: string;
   description: string;

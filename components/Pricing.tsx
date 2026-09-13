@@ -1,78 +1,121 @@
 import React from 'react';
-import { Check } from 'lucide-react';
-import { PRICING_PLANS } from '../constants';
+import { Check, ShieldCheck, Sparkles, ArrowRight, Zap } from 'lucide-react';
+import { PRICING_PLANS, WHATSAPP_NUMBER } from '../constants';
 import FadeIn from './FadeIn';
 
 const Pricing: React.FC = () => {
   return (
-    <section id="pricing" className="py-24 relative bg-background">
+    <section id="pricing" className="py-24 md:py-32 relative border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+
+      {/* Section ambient */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(232,160,32,0.04), transparent 70%)' }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
+
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <FadeIn>
-            <span className="text-sm font-heading font-bold tracking-widest text-primary uppercase mb-4 block">Simple Pricing</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full
+                            bg-amber-subtle border border-border-amber text-amber-DEFAULT
+                            text-xs font-mono font-bold uppercase tracking-wider mb-4">
+              <Zap className="w-3.5 h-3.5" />
+              <span>Transparent Lifetime License</span>
+            </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text mb-6">
-              Pay Once, <br />
-              <span className="italic">Own it Forever</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-text tracking-tight mb-4 leading-tight">
+              Pay Once.{' '}
+              <span className="text-gradient-amber">Own It Forever.</span>
             </h2>
           </FadeIn>
           <FadeIn delay={200}>
-            <p className="text-text-muted max-w-xl mx-auto text-lg">
-              Stop paying monthly subscriptions. Get the full power of Urthly POS with a single one-time payment.
+            <p className="text-text-secondary text-lg max-w-xl mx-auto font-medium">
+              No monthly subscriptions. No per-transaction commissions. No forced internet renewals.
             </p>
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
           {PRICING_PLANS.map((plan, idx) => (
-            <FadeIn
-              key={idx}
-              delay={idx * 100 + 300}
-              className={`p-10 rounded-3xl border transition-all duration-300 ease-premium relative flex flex-col h-full
-                    ${plan.highlight
-                  ? 'bg-surface border-primary shadow-glow hover:shadow-glow-lg scale-105 z-10 hover:-translate-y-2'
-                  : 'bg-surface border-border hover:border-primary/50 hover:-translate-y-2 hover:shadow-lift'
-                }`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-primary text-white text-xs font-mono font-bold rounded-full tracking-wide uppercase shadow-lg shadow-primary/20 flex gap-2 items-center">
-                  <span>✨ Best Value</span>
-                </div>
-              )}
-
-              <div className="mb-8 text-center md:text-left">
-                <h3 className={`text-xl font-heading font-bold mb-2 ${plan.highlight ? 'text-primary' : 'text-text'}`}>{plan.name}</h3>
-                <div className="flex items-baseline justify-center md:justify-start gap-1">
-                  {plan.price !== 'Custom' && <span className="text-2xl font-medium text-text-dim">Rs.</span>}
-                  <span className="text-6xl font-heading font-bold text-text tracking-tighter">{plan.price}</span>
-                  <span className="text-text-dim text-sm font-medium font-mono">{plan.period}</span>
-                </div>
-                <p className="text-sm text-text-muted mt-4 font-medium">{plan.description}</p>
-              </div>
-
-              <div className="flex-grow">
-                <div className="h-px bg-border w-full mb-8"></div>
-                <ul className="space-y-4 mb-10">
-                  {plan.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-start gap-3 text-sm text-text-muted">
-                      <div className={`mt-0.5 rounded-full p-0.5 ${plan.highlight ? 'bg-primary/10 text-primary' : 'bg-background text-text-dim'}`}>
-                        <Check className="w-3 h-3 stroke-[3]" />
-                      </div>
-                      <span className="font-medium">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <button className={`w-full py-4 rounded-xl text-sm font-heading font-bold transition-all duration-300 ease-premium transform hover:-translate-y-1 active:scale-95 focus-ring
-                  ${plan.highlight
-                  ? 'bg-primary text-white hover:bg-primary-hover shadow-glow hover:shadow-glow-lg'
-                  : 'bg-background text-text hover:bg-white/5 border border-border'
+            <FadeIn key={idx} delay={idx * 100 + 300}>
+              <div
+                className={`p-8 md:p-10 rounded-3xl border transition-all duration-300 relative flex flex-col justify-between h-full ${
+                  plan.highlight
+                    ? 'bg-surface-raised border-border-amber-strong shadow-amber'
+                    : 'bg-surface-raised border-border hover:border-border-strong'
                 }`}
               >
-                {plan.buttonText}
-              </button>
+                {/* Popular badge */}
+                {plan.highlight && (
+                  <div
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 text-canvas text-xs font-mono font-bold rounded-full tracking-wider uppercase flex items-center gap-1.5"
+                    style={{ background: 'linear-gradient(135deg, #F5BC4A, #E8A020)' }}
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    Most Popular For Sri Lankan Stores
+                  </div>
+                )}
+
+                <div>
+                  <div className="mb-6">
+                    <span className="text-xs font-mono font-bold text-amber-DEFAULT uppercase tracking-wider block mb-1">
+                      {plan.tagline}
+                    </span>
+                    <h3 className="text-2xl font-heading font-extrabold text-text mb-3">{plan.name}</h3>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl sm:text-5xl font-heading font-extrabold text-text tracking-tight font-mono">
+                        {plan.price}
+                      </span>
+                      <span className="text-text-secondary text-xs font-mono uppercase font-semibold">{plan.period}</span>
+                    </div>
+                    <p className="text-sm text-text-secondary mt-3 font-medium">{plan.description}</p>
+                  </div>
+
+                  <div className="h-px w-full mb-8" style={{ background: 'rgba(255,255,255,0.07)' }} />
+
+                  <ul className="space-y-4 mb-10">
+                    {plan.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-3 text-sm">
+                        <div className={`mt-0.5 rounded-full p-1 shrink-0 ${plan.highlight ? 'bg-amber-glow text-amber-DEFAULT' : 'bg-white/8 text-text-secondary'}`}>
+                          <Check className="w-3.5 h-3.5 stroke-[3]" />
+                        </div>
+                        <span className="font-semibold text-text">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                      `Hello! I want to order the ${plan.name} plan (${plan.price}). Please arrange a demo.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full py-4 rounded-xl text-sm font-heading font-bold transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98] ${
+                      plan.highlight
+                        ? 'text-canvas'
+                        : 'bg-surface text-text border border-border hover:border-border-strong'
+                    }`}
+                    style={plan.highlight ? { background: 'linear-gradient(135deg, #F5BC4A 0%, #E8A020 100%)' } : {}}
+                  >
+                    {plan.buttonText}
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+
+                  <div className="mt-4 text-center">
+                    <span className="text-[11px] font-mono text-text-muted flex items-center justify-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-amber-DEFAULT" />
+                      Lifetime License • 0% Renewal Fees
+                    </span>
+                  </div>
+                </div>
+              </div>
             </FadeIn>
           ))}
         </div>
